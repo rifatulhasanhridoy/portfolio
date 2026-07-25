@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rifatul Hasan — Portfolio</title>
+  <meta name="description" content="Rifatul Hasan — analyst, organizer, team builder. Dhaka, Bangladesh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --pitch: #0E1811;
+      --pitch-2: #152418;
+      --pitch-3: #1B2E20;
+      --cream: #F3EFDD;
+      --cream-dim: #C7C2A6;
+      --cream-faint: #8E9384;
+      --gold: #C9A227;
+      --gold-soft: #8E7A32;
+      --line: #2A3B2A;
+      --navy: #26364A;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--pitch);
+      color: var(--cream);
+      font-family: 'Source Serif 4', serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .display {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* subtle scorecard-line texture */
+    .lines-bg {
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, rgba(243, 239, 221, 0.035) 28px);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--line);
+    }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(14, 24, 17, 0.88);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navlink {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      padding: 6px 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .navlink:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .navlink:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* HERO */
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+    }
+
+    .hero-name {
+      font-size: clamp(52px, 10vw, 118px);
+      line-height: 0.92;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .hero-role {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      font-size: clamp(16px, 2.4vw, 22px);
+      color: var(--gold-soft);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--pitch);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(234, 203, 137, 0.2);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 3px;
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--cream-dim);
+      transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(234, 203, 137, 0.05);
+      color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* SCOREBOARD STRIP - signature element */
+    .scoreboard {
+      background: var(--pitch-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 22px 0;
+      text-align: center;
+      border-left: 1px solid var(--line);
+    }
+
+    .stat:first-child {
+      border-left: none;
+    }
+
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: clamp(26px, 4vw, 38px);
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      margin-top: 8px;
+    }
+
+    /* SECTION HEADERS */
+    .sec-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .sec-title {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      font-size: clamp(30px, 4vw, 44px);
+      color: var(--cream);
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--cream-dim);
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--pitch-2);
+      border: 1px solid var(--line);
+      padding: 26px;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      border-color: rgba(234, 203, 137, 0.3);
+    }
+
+    .card img {
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .card:hover img {
+      transform: scale(1.03);
+    }
+
+    .card h3 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-size: 16px;
+      color: var(--cream);
+      margin: 0 0 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .chip {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      color: var(--cream-dim);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
+      margin: 0 8px 8px 0;
+    }
+
+    /* TIMELINE */
+    .tl-item {
+      display: grid;
+      grid-template-columns: 110px 1px 1fr;
+      gap: 24px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      transition: transform 0.3s ease;
+    }
+
+    .tl-item:hover {
+      transform: translateX(8px);
+    }
+
+    .tl-item:last-child {
+      border-bottom: none;
+    }
+
+    .tl-period {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      color: var(--gold-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .tl-bar {
+      background: var(--line);
+    }
+
+    .tl-role {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+    }
+
+    .tl-org {
+      color: var(--cream-faint);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .tl-desc {
+      color: var(--cream-dim);
+      margin-top: 10px;
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+
+    /* PROJECTS */
+    .proj {
+      border: 1px solid var(--line);
+      background: var(--pitch-2);
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .proj h3 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      font-size: 19px;
+      color: var(--cream);
+      margin: 10px 0 12px;
+      letter-spacing: 0.01em;
+    }
+
+    .proj p {
+      color: var(--cream-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .proj a {
+      margin-top: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--cream);
+      border-bottom: 1px solid var(--gold);
+      align-self: flex-start;
+    }
+
+    .proj a:hover {
+      color: var(--gold);
+    }
+
+    /* FOOTER / CONTACT */
+    footer {
+      background: var(--pitch-2);
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+    }
+
+    .contact-link:last-of-type {
+      border-bottom: none;
+    }
+
+    .contact-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+    }
+
+    .contact-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(18px, 3vw, 26px);
+      text-transform: uppercase;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+    }
+
+    .contact-link:hover .contact-value {
+      color: var(--gold);
+    }
+
+    .contact-arrow {
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    #mobilemenu {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    @media (max-width:820px) {
+      .navlinks {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      #mobilemenu.open {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; height:68px;">
+      <a href="#top" style="text-decoration:none; display:flex; align-items:center; gap:8px;">
+        <span class="display" style="font-size:19px; color:var(--cream); font-weight:600;">RIFATUL<span
+            style="color:var(--gold);">.</span></span>
+      </a>
+      <nav class="navlinks" style="display:flex; gap:34px;">
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#skills">Skills</a>
+        <a class="navlink" href="#experience">Experience</a>
+        <a class="navlink" href="#work">Work</a>
+        <a class="navlink" href="#contact">Contact</a>
+      </nav>
+      <a class="navlink hamburger" href="#" id="hbtn" aria-label="Open menu"
+        style="border:1px solid var(--line); padding:8px 12px;">MENU</a>
+    </div>
+    <div id="mobilemenu" class="container" style="flex-direction:column; gap:16px; padding-bottom:20px;">
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#strengths">Strengths</a>
+      <a class="navlink" href="#experience">Experience</a>
+      <a class="navlink" href="#work">Work</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="lines-bg" style="padding:90px 0 0;">
+    <div class="container">
+      <p class="eyebrow">DHAKA, BANGLADESH — OPEN TO OPPORTUNITIES</p>
+      <h1 class="hero-name" style="margin:14px 0 8px;">RIFATUL<br>HASAN</h1>
+      <p class="lead" style="max-width:640px; margin-top:26px;">
+        I bring structure to complex challenges, combining analytical thinking with a strong foundation in operations
+        and team coordination. Backed by a disciplined approach and years of hands-on leadership running teams and
+        organizations end to end.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; padding-bottom:70px;">
+        <a class="btn" href="#contact">Get in Touch</a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">View CV/Resume ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding:100px 0;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr; gap:50px;" class="about-grid">
+        <div>
+          <p class="sec-eyebrow">01 — About</p>
+          <h2 class="sec-title" style="margin-top:10px;">How I Work</h2>
+        </div>
+        <div style="max-width:680px;">
+          <p class="lead">
+            I'm currently completing an M.S. in Applied Statistics and Data Science
+            (Weekend Masters) at Jahangirnagar University, having come from an undergraduate
+            background in Islamic History and Culture at the University of Dhaka. That
+            switch wasn't accidental — I've always been drawn to figuring out how things
+            actually work underneath the surface, whether that's a historical process or a
+            spreadsheet full of transactions.
+          </p>
+          <p class="lead" style="margin-top:20px;">
+            Outside the classroom, I am self-motivated and have spent years taking on
+            leadership roles: captaining cricket teams, running a student association as General
+            Secretary, coordinating alumni events, and building a small business from
+            scratch during university. Playing and coaching sports has made me resilient,
+            teaching me that good outcomes come from a clear process, honest communication,
+            and people who trust each other.
+          </p>
+          <p class="lead" style="margin-top:20px;">
+            I'm now looking to bring that same discipline and resilience into a corporate environment —
+            wherever structured thinking, reliable execution, and steady leadership are valued.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    @media(min-width:900px) {
+      .about-grid {
+        grid-template-columns: 280px 1fr !important;
+      }
+    }
+  </style>
+
+  <hr class="rule">
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding:100px 0;">
+    <div class="container">
+      <p class="sec-eyebrow">02 — Skills</p>
+      <h2 class="sec-title" style="margin-top:10px;">What I Bring</h2>
+      <div style="display:grid; grid-template-columns:1fr; gap:20px; margin-top:46px;" class="strength-grid">
+        <div class="card">
+          <h3>Tech Stack &amp; AI</h3>
+          <div class="chip">AI Native</div>
+          <div class="chip">AI Workflow Automation</div>
+          <div class="chip">AI-Assisted Content Creation</div>
+          <div class="chip">MS Office</div>
+          <div class="chip">Data Analysis</div>
+          <div class="chip">Excel</div>
+          <div class="chip">Power BI</div>
+          <div class="chip">Python</div>
+          <div class="chip">Automation</div>
+        </div>
+        <div class="card">
+          <h3>Leadership &amp; Management</h3>
+          <div class="chip">Leadership</div>
+          <div class="chip">Team Management</div>
+          <div class="chip">Event Coordination</div>
+          <div class="chip">Committee Management</div>
+          <div class="chip">Social Media Management</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    @media(min-width:900px) {
+      .strength-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+  </style>
+
+  <hr class="rule">
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="padding:100px 0;">
+    <div class="container">
+      <p class="sec-eyebrow">03 — Experience</p>
+      <h2 class="sec-title" style="margin-top:10px;">Leadership &amp; Experience</h2>
+
+      <div style="margin-top:40px;">
+        <div class="tl-item">
+          <div class="tl-period">2026 – 27</div>
+          <div class="tl-bar"></div>
+          <div>
+            <div class="tl-role">General Secretary</div>
+            <div class="tl-org">Islamic History Sports Club, Dhaka University</div>
+            <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:12px; align-items:flex-start;">
+              <div class="tl-desc" style="margin-top:0; flex: 1 1 250px;">Overseeing club operations and event
+                coordination for club members.</div>
+              <img src="https://i.postimg.cc/x8n8W4qS/IHC-committee.jpg" alt="Islamic History Sports Club"
+                style="width:100%; max-width:220px; height:auto; border-radius:6px; border:1px solid var(--line);">
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2025 – 26</div>
+          <div class="tl-bar"></div>
+          <div>
+            <div class="tl-role">General Secretary</div>
+            <div class="tl-org">Dhaka University Students Association of Palash</div>
+            <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:12px; align-items:flex-start;">
+              <div class="tl-desc" style="margin-top:0; flex: 1 1 250px;">Led coordination and communication for the
+                association, organizing member activities and representing the group's interests.</div>
+              <img src="https://i.postimg.cc/Hndnfhjd/DUSAP-committee.jpg"
+                alt="Dhaka University Students Association of Palash"
+                style="width:100%; max-width:220px; height:auto; border-radius:6px; border:1px solid var(--line);">
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Jan – Feb 2024</div>
+          <div class="tl-bar"></div>
+          <div>
+            <div class="tl-role">Working Committee Member, Remians Reunion 2024</div>
+            <div class="tl-org">Old Remians Welfare Association</div>
+            <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:12px; align-items:flex-start;">
+              <div class="tl-desc" style="margin-top:0; flex: 1 1 250px;">Coordinated outreach and invitation logistics
+                for former teachers, ensuring a respectful alumni-faculty reunion.</div>
+              <img src="https://i.postimg.cc/zv8v9c3b/ORWA-reunion.jpg" alt="Remians Reunion"
+                style="width:100%; max-width:220px; height:auto; border-radius:6px; border:1px solid var(--line);">
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2022 – 24</div>
+          <div class="tl-bar"></div>
+          <div>
+            <div class="tl-role">Founder &amp; Operator, Jersey Business</div>
+            <div class="tl-org">Independent</div>
+            <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:12px; align-items:flex-start;">
+              <div class="tl-desc" style="margin-top:0; flex: 1 1 250px;">Ran a small custom jersey business alongside
+                studies — handling orders, vendor coordination, pricing, and customer communication end to end.</div>
+              <img src="https://i.postimg.cc/MZmvyqrt/jersey-bussiness.avif" alt="Jersey Business"
+                style="width:100%; max-width:220px; height:auto; border-radius:6px; border:1px solid var(--line);">
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2022 – 23</div>
+          <div class="tl-bar"></div>
+          <div>
+            <div class="tl-role">Coach &amp; Mentor, Cricket Team</div>
+            <div class="tl-org">Dhaka Residential Model College</div>
+            <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:12px; align-items:flex-start;">
+              <div class="tl-desc" style="margin-top:0; flex: 1 1 250px;">Moved from player to coach — building a
+                structured, result-oriented training process and a disciplined, supportive team environment.</div>
+              <img src="https://i.postimg.cc/d3w3zxDT/mentor-DRMC.png" alt="Coach & Mentor DRMC"
+                style="width:100%; max-width:220px; height:auto; border-radius:6px; border:1px solid var(--line);">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- WORK / PROJECTS -->
+  <section id="work" style="padding:100px 0;">
+    <div class="container">
+      <p class="sec-eyebrow">04 — Sports Career</p>
+      <h2 class="sec-title" style="margin-top:10px;">Teammate &amp; Leader</h2>
+      <p class="lead" style="margin-top:16px; max-width:760px;">
+        Sports have been a core part of my development, teaching me resilience, teamwork, and accountability. I've
+        included these highlights to showcase my impact as both a teammate and a leader—demonstrating my ability to
+        build communities, coordinate people, and drive collective success under pressure.
+      </p>
+      <div style="display:grid; grid-template-columns:1fr; gap:26px; margin-top:46px;" class="sports-grid">
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/BbMPqXZW/du.jpg" alt="Dhaka University Cricket Team"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Dhaka University Cricket Team</h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Played across multiple
+              formats including Cricket Ball, Tape Tennis, and Indoor Tournaments for the central team. Made meaningful
+              contributions both on and off the field, focusing on building a strong, inclusive cricketing community
+              rooted in mutual respect and dedication.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/9Xp7PNdY/drmc.jpg" alt="Dhaka Residential Model College"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Dhaka Residential Model College</h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Began my leadership journey
+              in Dhaka as a team captain. Successfully built the college cricket team from the ground up, transforming a
+              previously unranked squad into a premier college team in the region. Achieved this through effective
+              coordination between college administration and the players' aspirations.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/DzLWSCft/javelin.avif" alt="Dhaka University Athletics Team"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Dhaka University Athletics Team</h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Recognized as the best
+              javelin thrower in the university for two consecutive years, earning a selection to represent the official
+              University Athletics Team.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/VsRC9Hq2/jashim-cricket.jpg" alt="Kabi Jashim Uddin Hall Cricket Team"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Kabi Jashim Uddin Hall Cricket Team
+            </h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Captained the hall's cricket
+              team across three major tournaments in 2025, taking responsibility for on-field strategy, team selection,
+              and overall execution.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/XvdZr2Nm/jashim-athletics.avif" alt="Kabi Jashim Uddin Hall Athletics Team"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Kabi Jashim Uddin Hall Athletics Team
+            </h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Led the hall's athletics team
+              to its first-ever runner-up finish in the history of the Inter-Hall Athletics Competition, fostering a
+              culture of high performance and teamwork.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/PJ2vtPfj/ihc.jpg" alt="Islamic History & Culture Cricket Team"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Islamic History & Culture Cricket Team
+            </h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Guided the departmental
+              cricket team to reach the tournament semifinals, achieving a significant milestone for the department
+              after many years.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="https://i.postimg.cc/J0PH1Grv/1st-division.jpg"
+            alt="Narsingdi District 1st Division Cricket League 2022"
+            style="width:100%; height:220px; object-fit:cover; object-position:top center; border-bottom:1px solid var(--line);">
+          <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+            <h3 style="border:none; margin:0 0 10px; padding:0; font-size:18px;">Narsingdi District 1st Division Cricket
+              League 2022</h3>
+            <p style="color:var(--cream-dim); font-size:15px; line-height:1.65; margin:0;">Selected to represent
+              Mohammedan Sporting Club in the highly competitive 1st Division Cricket League, testing my skills at a
+              professional, district-level standard.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <style>
+    @media(min-width:768px) {
+      .sports-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .sports-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+  </style>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" style="padding:100px 0 40px;">
+    <div class="container">
+      <p class="sec-eyebrow">05 — Contact</p>
+      <h2 class="sec-title" style="margin-top:10px 0 10px;">Let's Talk</h2>
+      <p class="lead" style="max-width:560px; margin-top:16px;">
+        Open to analyst, operations, and general corporate roles in Dhaka. Reach out directly —
+        I reply quickly.
+      </p>
+
+      <div style="margin-top:48px;">
+        <a class="contact-link" href="mailto:rifatulhasanhridoy@gmail.com">
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">rifatulhasanhridoy@gmail.com</div>
+          </div>
+          <div class="contact-arrow">→</div>
+        </a>
+        <a class="contact-link" href="tel:+8801614418861">
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">01614418861</div>
+          </div>
+          <div class="contact-arrow">→</div>
+        </a>
+      </div>
+
+      <div
+        style="display:flex; justify-content:space-between; align-items:center; margin-top:70px; padding-top:24px; border-top:1px solid var(--line); flex-wrap:wrap; gap:12px;">
+        <span class="mono" style="font-size:12px; color:var(--cream-faint);">© 2026 RIFATUL HASAN — DHAKA,
+          BANGLADESH</span>
+        <span class="mono" style="font-size:12px; color:var(--cream-faint);">BUILT FOR GENERAL APPLICATIONS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hbtn = document.getElementById('hbtn');
+    const mm = document.getElementById('mobilemenu');
+    hbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      mm.classList.toggle('open');
+      mm.style.display = mm.classList.contains('open') ? 'flex' : 'none';
+    });
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mm.classList.remove('open'); mm.style.display = 'none';
+    }));
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      document.querySelectorAll('section, footer, .card, .tl-item').forEach(el => el.classList.add('reveal'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('section, footer, .card, .tl-item').forEach(el => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+
+</html>
